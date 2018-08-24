@@ -27,13 +27,9 @@
         "vscode": "^1.1.21",
         "tslint": "^5.8.0",
         "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42",
-        "@types/lodash.droprightwhile": "^4.6.3",
-        "@types/lodash.range": "^3.2.3"
+        "@types/mocha": "^2.2.42"
     },
     "dependencies": {
-        "lodash.droprightwhile": "^4.6.0",
-        "lodash.range": "^3.2.0",
         "axios": "^0.18.0"
     }
 }

@@ -3,13 +3,11 @@
 import * as vscode from 'vscode';
 import axios from 'axios';
 
-const dropRightWhile = require('lodash.droprightwhile');
-const range = require('lodash.range');
-
 type Package = {
 	user: string;
 	repo: string;
 };
+
 var packages:Package[];
 
 const GetCompletionItem = (Range: vscode.Range) => (pack: Package) => {
@@ -38,10 +36,12 @@ export function activate(context: vscode.ExtensionContext) {
 
 	vscode.languages.registerCompletionItemProvider({ language: 'json', pattern: '**/pawn.json' }, {
 		async provideCompletionItems (document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+			
 			const editor = vscode.window.activeTextEditor;
 			const posline = editor.selection.active;
 			const { text } = document.lineAt(posline);
 			const currentLineReplaceRange = new vscode.Range(new vscode.Position(posline.line, position.character), new vscode.Position(posline.line, text.length));
+			
 			if(packages !== undefined){
 				return packages.map(GetCompletionItem(currentLineReplaceRange));
 			}
