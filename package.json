@@ -1,0 +1,39 @@
+{
+    "name": "search-pawn-package",
+    "displayName": "search-pawn-package",
+    "description": "vscode extension providing suggestion for pawn dependencies by using pawndex api",
+    "version": "0.0.1",
+    "publisher": "vscecli",
+    "engines": {
+        "vscode": "^1.26.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "workspaceContains:pawn.json"
+    ],
+    "main": "./out/extension",
+    "contributes": {},
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.21",
+        "tslint": "^5.8.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42",
+        "@types/lodash.droprightwhile": "^4.6.3",
+        "@types/lodash.range": "^3.2.3"
+    },
+    "dependencies": {
+        "lodash.droprightwhile": "^4.6.0",
+        "lodash.range": "^3.2.0",
+        "axios": "^0.18.0"
+    }
+}
