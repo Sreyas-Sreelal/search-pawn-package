@@ -23,7 +23,7 @@ const GetCompletionItem = (Range: vscode.Range) => (pack: Package) => {
 async function GetPackagelist() {
 	try {
 		let response =  await axios.get("https://list.packages.sampctl.com");
-		packages = response.data;
+		packages = response.data.filter((item:Package) => item.classification === "full");
 	} catch(err) {
 		console.error(err);
 		vscode.window.showErrorMessage("Couldn't connect to list.packages.sampctl.com");
@@ -45,7 +45,6 @@ export function activate(context: vscode.ExtensionContext) {
 			const currentLineReplaceRange = new vscode.Range(new vscode.Position(posline.line, position.character), new vscode.Position(posline.line, text.length));
 			
 			if(packages !== undefined) {
-				packages = packages.filter((item:Package) => item.classification === "full");
 				return packages.map(GetCompletionItem(currentLineReplaceRange));
 			}
 		},
