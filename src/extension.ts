@@ -6,19 +6,21 @@ import axios from 'axios';
 type Package = {
 	user: string;
 	repo: string;
+	classification: string;
 };
 
 var packages:Package[];
 
 const GetCompletionItem = (Range: vscode.Range) => (pack: Package) => {
-	const { user, repo } = pack;
+
+	const { user, repo , classification } = pack;
 	const content = new vscode.CompletionItem(user+"/"+repo, vscode.CompletionItemKind.Text);
 	content.additionalTextEdits = [vscode.TextEdit.delete(Range)];
 	content.insertText = `"${user}/${repo}"`;
 	return content;
 };
 
-async function GetPackagelist(){
+async function GetPackagelist() {
 	try {
 		let response =  await axios.get("https://list.packages.sampctl.com");
 		packages = response.data;
@@ -42,7 +44,8 @@ export function activate(context: vscode.ExtensionContext) {
 			const { text } = document.lineAt(posline);
 			const currentLineReplaceRange = new vscode.Range(new vscode.Position(posline.line, position.character), new vscode.Position(posline.line, text.length));
 			
-			if(packages !== undefined){
+			if(packages !== undefined) {
+				packages = packages.filter((item:Package) => item.classification === "full");
 				return packages.map(GetCompletionItem(currentLineReplaceRange));
 			}
 		},
