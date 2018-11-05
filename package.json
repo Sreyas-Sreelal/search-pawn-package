@@ -3,7 +3,7 @@
     "displayName": "search-pawn-package",
     "description": "vscode extension providing suggestion for pawn dependencies by using pawndex api",
     "version": "0.0.1",
-    "publisher": "Sreyas Sreelal (SyS)",
+    "publisher": "sreyas",
     "engines": {
         "vscode": "^1.26.0"
     },
