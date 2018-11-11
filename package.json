@@ -2,7 +2,7 @@
     "name": "search-pawn-package",
     "displayName": "search-pawn-package",
     "description": "vscode extension providing suggestion for pawn dependencies by using pawndex api",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "sreyassreelal",
     "engines": {
         "vscode": "^1.26.0"
@@ -15,7 +15,10 @@
         "type": "git",
         "url": "https://github.com/Sreyas-Sreelal/search-pawn-package.git"
     },
-    "categories": ["Other", "Programming Languages"],
+    "categories": [
+        "Other",
+        "Programming Languages"
+    ],
     "activationEvents": [
         "workspaceContains:pawn.json"
     ],
