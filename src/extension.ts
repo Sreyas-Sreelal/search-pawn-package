@@ -22,11 +22,11 @@ const GetCompletionItem = (Range: vscode.Range) => (pack: Package) => {
 
 async function GetPackagelist() {
 	try {
-		let response =  await axios.get("http://list.packages.sampctl.com/");
+		let response =  await axios.get("https://api.sampctl.com/");
 		packages = response.data.filter((item:Package) => item.classification === "full");
 	} catch(err) {
 		console.error(err);
-		vscode.window.showErrorMessage("Couldn't connect to list.packages.sampctl.com");
+		vscode.window.showErrorMessage("Couldn't connect to https://api.sampctl.com/");
 	}
 
 }
